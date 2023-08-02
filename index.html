@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            padding: 10px;
+            background-color: rgb(31, 31, 32);
+            color: white;
+            font-family: sans-serif;
+        }
+    
+        h4{
+            font-size: 22px;
+            color: rgb(149, 5, 5);
+            
+        }
+        h6{
+            font-size: 20px;
+            color: rgb(157, 157, 248);
+        }
+    
+        pre{
+            background-color: white;
+            color: orangered;
+            padding: 10px;
+            font-size: 18px;
+    
+            margin-top: 20px;
+        }
+    </style>
+<body>
+    <h4>Question 1 - Create 2 objects - parent and child. Attach methods to parent and use those methods in child object using parents prototype</h4>
+<h6>Ans-
+    <pre>
+        
+let parent = {
+ name:'amit',
+    
+  calc:function(a,b){
+  console.log(a+b)
+  console.log(a-b)
+
+ }
+}
+    
+let child = Object.create(parent)
+console.log(child.calc(5,4))
+child.name ="rahul"  
+console.log(child.name)// if we create same name vairable then -
+this will be first priority rahul will print else amit if not found then get from prototype
+console.log(Object.getPrototypeOf(child)) // return prototype of child
+let ff = Object.getPrototypeOf(child) // store child prototype in vriable
+console.log(ff.name)  // accessing stored child prototype name
+    
+    </pre>
+</h6>
+<br>
+<h4>Question 2 - Write code to explain prototype chaining</h4>
+<h6>Ans - This code defines the prototype chaining untill get null prototype 
+    <pre>
+        let parent = {
+            name:'amit',
+        
+            calc:function(a,b){
+                console.log(a+b)
+                console.log(a-b)
+        
+            }
+        }
+        
+        let child = Object.create(parent)
+        
+        
+        let proto =Object.getPrototypeOf(child) // store child prototype in vriable
+        let proto1 =Object.getPrototypeOf(proto)
+        console.log(proto1)
+    </pre>
+</h6>
+<br>
+<h4>Question 3 - Add a method to calculate sum of all elements in Array in array's protype, use that method to calculate sum for multiple arrays</h4>
+<h6>Ans - 
+    <pre>
+        let parent = {
+            calc:function(arr){
+                var sum =0
+               arr.forEach((elem)=>{
+                sum +=elem
+               })
+                  
+               console.log(sum)          
+            }  
+        }       
+        parent.calc([1,3,4,5,6])     
+    </pre>
+
+</h6>
+<br>
+
+<h4>Question 4 - Write a JavaScript function to retrieve all the names of object's own and inherited properties.</h4>
+<h6>
+    Ans - 
+    <pre>
+        let parent = {
+            name:"amit",
+            calc:function(name){
+               
+               console.log(name)
+            }
+            
+        }
+        
+        
+        let proto1 = Object.create(parent)
+        let proto2 = Object.getPrototypeOf(proto1)
+        console.log(proto2.name)
+    </pre>
+</h6>
+    <script src="script.js"></script>
+</body>
+</html>
